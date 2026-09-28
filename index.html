@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>鹈鹕骑行 · Pelican Pedal</title>
+<meta name="description" content="一只戴着红白骑行帽和太阳镜的鹈鹕，骑着一辆薄荷绿复古自行车的实时 3D 场景。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%237ad9bd'/%3E%3Ccircle cx='16' cy='13' r='6' fill='%23fbf8f1'/%3E%3Cpath d='M20 13h9l-3 3h-6z' fill='%23f2a44c'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="./styles.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three.module.js",
+    "three/addons/": "./vendor/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="鹈鹕骑自行车的三维场景，可拖动旋转、滚轮缩放"></canvas>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="loader-mark" aria-hidden="true">
+    <span class="wheel"></span>
+    <span class="frame"></span>
+  </div>
+  <p class="loader-text">正在准备骑行姿态…</p>
+</div>
+
+<header class="hud hud-title">
+  <h1>Pelican&nbsp;Pedal</h1>
+  <p>薄荷绿复古单车 · 红白骑行帽 · 实时 3D</p>
+</header>
+
+<div class="hud hud-stats" aria-hidden="true">
+  <span id="fps">60 fps</span>
+  <span class="dot"></span>
+  <span>three.js · WebGL</span>
+</div>
+
+<div class="hud hud-controls">
+  <div class="panel">
+    <div class="speed-block">
+      <label for="speed" class="speed-label">
+        <span>骑行速度</span>
+        <output id="speed-value" for="speed">17.0 km/h</output>
+      </label>
+      <input id="speed" type="range" min="0" max="34" step="0.5" value="17"
+             aria-label="骑行速度（公里每小时）" />
+    </div>
+    <div class="buttons">
+      <button id="play" type="button" data-state="playing" aria-label="Pause ride" title="暂停 / 继续（空格）">
+        <svg class="icon pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="3" height="10" rx="1.2"/><rect x="9" y="3" width="3" height="10" rx="1.2"/></svg>
+        <svg class="icon play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.4v9.2a.6.6 0 0 0 .92.5l7-4.6a.6.6 0 0 0 0-1l-7-4.6a.6.6 0 0 0-.92.5Z"/></svg>
+        <span class="label">暂停</span>
+      </button>
+      <button id="lines" type="button" aria-pressed="true" aria-label="Toggle speed lines" title="速度线（L）">
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 5h9M4 8h10M1 11h7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+        <span class="label">速度线</span>
+      </button>
+      <button id="reset" type="button" aria-label="Reset camera view" title="复位视角（R）">
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.6a5.4 5.4 0 1 0 5.2 6.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 0.8v3.4L5.2 2.5z"/></svg>
+        <span class="label">复位</span>
+      </button>
+    </div>
+  </div>
+</div>
+<p class="hud hud-hint" id="hint">拖动旋转 · 滚轮缩放 · 空格暂停 · ↑↓ 调速</p>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
