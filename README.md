@@ -1,11 +1,13 @@
 # Pelican Pedal · 鹈鹕骑行
 
+> **在线试玩：** https://bill-666code.github.io/pelican-pedal/
+
 一只戴着**红白骑行帽**和**太阳镜**的鹈鹕，骑着一辆**薄荷绿复古单车**在公路上飞驰。
 纯前端的实时 3D 场景（three.js），可旋转、缩放并调节骑行速度。
 
 ![Pelican Pedal](shots/hero.png)
 
-## 运行
+## 本地运行
 
 ```bash
 cd pelican
